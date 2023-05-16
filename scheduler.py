@@ -16,7 +16,7 @@ class Scheduler:
     SCH_tasks_G = []
     current_index_task = 0
     def __int__(self):
-        self.current_task = 0
+        pass
 
     def SCH_Init(self):
         self.current_task = 0
@@ -37,7 +37,7 @@ class Scheduler:
         #     else:
         #         self.SCH_tasks_G[i].Delay = self.SCH_tasks_G[i].Period
         #         self.SCH_tasks_G[i].RunMe += 1
-        # self.current_task = 0
+
         if self.SCH_tasks_G[self.current_task].Delay > 0:
             self.SCH_tasks_G[self.current_task].Delay -= 1
         else:
@@ -50,7 +50,7 @@ class Scheduler:
         #     if self.SCH_tasks_G[i].RunMe > 0:
         #         self.SCH_tasks_G[i].RunMe -= 1
         #         self.SCH_tasks_G[i].pTask()
-        # self.current_task = 0
+
         if self.SCH_tasks_G[self.current_task].RunMe > 0:
             self.SCH_tasks_G[self.current_task].RunMe -= 1
             self.SCH_tasks_G[self.current_task].pTask()

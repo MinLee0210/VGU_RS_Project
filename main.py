@@ -18,4 +18,4 @@ print('CALL EVENTS')
 while True: 
     scheduler.SCH_Update()
     scheduler.SCH_Dispatch_Tasks()
-    time.sleep(1)
+    time.sleep(0.1)
