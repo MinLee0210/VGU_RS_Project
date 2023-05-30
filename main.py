@@ -19,5 +19,5 @@ scheduler.SCH_Add_Task(task1.run, 1000, 2000)
 while True: 
     scheduler.SCH_Update()
     scheduler.SCH_Dispatch_Tasks()
-    time.sleep(1)
+    time.sleep(0.1)
 
