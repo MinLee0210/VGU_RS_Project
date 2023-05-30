@@ -54,10 +54,17 @@ class Scheduler:
         if self.SCH_tasks_G[self.current_task].RunMe > 0:
             self.SCH_tasks_G[self.current_task].RunMe -= 1
             self.SCH_tasks_G[self.current_task].pTask()
+        else:
+            try:
+                self.current_task.type = 'ai'
+                self.SCH_Delete(self.current_task)
+            except:
+                pass
         self.current_task = (self.current_task + 1) % len(self.SCH_tasks_G)
 
     def SCH_Delete(self, aTask):
-        return
+        # return
+        aTask.run(isRunning=False)
 
     def SCH_GenerateID(self):
         return -1
