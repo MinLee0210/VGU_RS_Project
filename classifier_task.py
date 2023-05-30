@@ -5,7 +5,7 @@ import time
 
 
 class ClassifierTask:
-    def __init__(self, id):
+    def __init__(self, index):
         # Disable scientific notation for clarity
         np.set_printoptions(suppress=True)
 
@@ -16,14 +16,13 @@ class ClassifierTask:
         self.class_names = open("./checkpoints/labels.txt", "r").readlines()
 
         # CAMERA can be 0 or 1 based on default camera of your computer
-        self.camera = cv2.VideoCapture(0)
+        self.camera = None
+        self.index  = index
+        
 
-        self.id = id
-        self.type = 'ai'
+    def run(self):
 
-    def run(self, isRunning=True):
-
-        # while isRunning:
+        self.camera = cv2.VideoCapture(self.index)
         # Grab the webcamera's image.
         ret, image = self.camera.read()
 
@@ -49,12 +48,5 @@ class ClassifierTask:
         print("Class:", class_name[2:], end="")
         print("Confidence Score:", str(np.round(confidence_score * 100))[:-2], "%")
 
-        # Listen to the keyboard for presses.
-        keyboard_input = cv2.waitKey(1)
-
-        # # 27 is the ASCII for the esc key on your keyboard.
-        # if keyboard_input == 27 or isRunning == False:
-        #     break
-
         self.camera.release()
-        cv2.destroyAllWindows()
+        # cv2.destroyAllWindows()
